@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoService } from '../services/producto.service';
-import { IProducto } from '../interfaces';
+import { IProducto, ITecnologia, IInmobiliaria, IMotor } from '../interfaces';
 
 @Component({
   selector: 'app-details',
@@ -10,18 +10,28 @@ import { IProducto } from '../interfaces';
 })
 export class DetailsPage implements OnInit {
 
-  
+  id: string;
   nombre: string;
   descripcion: string;
   categoria:string;
   precio: number;
+
+  productos: (IProducto|ITecnologia|IInmobiliaria|IMotor);
   
 
   constructor(private _activatedRoute: ActivatedRoute, private _productoService: ProductoService) { }
 
   ngOnInit() {
-    this.nombre = this._activatedRoute.snapshot.paramMap.get('id');
-    console.log("He recibido: " +this.nombre)
+    this.id = this._activatedRoute.snapshot.paramMap.get('id');
+    let ref = this._productoService.getProducto(this.id);
+
+    ref.once("value", snapshot=>{
+      this.productos = snapshot.val();
+  });
+
+  }
+
+}
     //this._productoService.getProductos();
 
    /* let res1=this._productoService.getProducto(this.nombre)
@@ -34,6 +44,5 @@ export class DetailsPage implements OnInit {
     console.log("Categoria: "+ this.categoria)
     
   */
-  }
+  
 
-}
