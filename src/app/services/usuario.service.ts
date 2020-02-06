@@ -11,6 +11,11 @@ export class UsuarioService{
     getUsuarios(){
         let ref = this._db.database.ref("usuarios");
         return ref;
-   
 }
+    getUsuario(id){
+        let ref = this._db.database.ref("usuario/" +id);
+        return ref;
+
+    }
+
 }

@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'modificar/:id',
     loadChildren: () => import('./modificar/modificar.module').then( m => m.ModificarPageModule)
   },
+  {
+    path: 'megustas/:id',
+    loadChildren: () => import('./megustas/megustas.module').then( m => m.MegustasPageModule)
+  },
   
 ];
 

@@ -24,6 +24,9 @@ km: number;
 anio: number;
 vehiculo: string;
 estado:string;
+texto: string = "Me gusta";
+boton: boolean = false;
+
 
 productos: (IProducto|ITecnologia|IInmobiliaria| IMotor) [] = [] ;
 
@@ -50,6 +53,16 @@ productos: (IProducto|ITecnologia|IInmobiliaria| IMotor) [] = [] ;
     toast.present();
   }
 
+  async presentToast1() {
+    const toast = await this._toastCtrl.create({
+      message: 'Te ha gustado el producto',
+      duration: 1000,
+      position: 'bottom'
+    });
+    toast.present();
+  }
+
+
   buscar(){
     this._productosService.buscar('n9NDsnNsUMf9yp0RI1GIFRAoP8t2');
   }
@@ -59,5 +72,18 @@ productos: (IProducto|ITecnologia|IInmobiliaria| IMotor) [] = [] ;
     this._productosService.eliminar();
   }
 
+  megusta() : void {
+   this.boton = !this.boton;
+    if(this.boton = true)
+    {
+      this.texto = "Me gusta"
+      this.presentToast1();
+     
+    }
+    else{
+      this.texto = "Ya no me gusta"
+    }
+  
+  }
 
 }

@@ -8,6 +8,7 @@ export interface IProducto{
     usuario: string,
     precio: number,
     id: string,
+    
 }
 
 export interface ITecnologia extends IProducto{

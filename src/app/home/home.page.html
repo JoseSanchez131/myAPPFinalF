@@ -59,6 +59,7 @@
           <ion-button expand="block" [routerLink]="['/details/',item.id]" routerDirection="forward">
             Detalle
        </ion-button>
+       <ion-button  (click)="megusta()">{{boton? "Ya no gusta" : " Me gusta "}}</ion-button>
         </ion-item>
       </ion-list>
       <ion-button (click)="buscar()">Buscar</ion-button>
